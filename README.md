@@ -2,7 +2,7 @@
 
 **Obsidian Hermes** is an experimental Obsidian desktop plugin adapted for use with **Hermes Agent** and Hermes-compatible OpenAI-style API servers.
 
-It provides a vault-aware chat panel inside Obsidian, supports Hermes Agent slash commands, and adds workflow-oriented commands for working with notes, research material, RPG/campaign material, and other vault content.
+It provides a vault-aware chat panel inside Obsidian, supports Hermes Agent slash commands, and adds workflow-oriented commands for working with notes and other vault content. It is designed to run in ordinary Obsidian vaults without requiring a private folder structure.
 
 ## Provenance
 
@@ -23,7 +23,7 @@ Implemented or changed items include:
 - Renamed and rebranded the plugin for Hermes Agent use.
 - Updated the Obsidian plugin manifest to use the `obsidian-hermes` plugin id.
 - Replaced visible OpenClaw / Clawdian branding in the main UI with Hermes-oriented branding.
-- Added Hermes Agent iconography using `Pictures/icons/hermes-terminal-icon-transparent.svg` as the current source artwork:
+- Added bundled Hermes Agent iconography:
   - Obsidian ribbon icon replaced with Hermes terminal-style SVG artwork.
   - Chat welcome icon next to “Hey there” replaced with the same colored Hermes terminal-style SVG.
 - Added support for Hermes-style commands, including direct slash commands such as:
@@ -43,18 +43,12 @@ Implemented or changed items include:
   - `hermes /setup`
   - `hermes /help`
   - and similar Hermes-prefixed command messages.
-- Added workflow-oriented slash commands based around the vault’s `_agent/workflows` folder.
+- Added workflow-oriented slash commands that work without a required vault layout.
 - Added built-in workflow commands such as:
   - `/workflow-review-note`
   - `/workflow-create-note`
   - `/workflow-research-pack`
-  - `/workflow-literature`
-  - `/workflow-rpg`
-- Added dynamic workflow command discovery for Markdown workflow files stored under:
-
-```text
-_agent/workflows/
-```
+- Added optional dynamic workflow command discovery for Markdown workflow files stored in a user-configured vault-relative folder.
 
 - Updated API naming and defaults for Hermes Agent compatibility.
 - Preserved compatibility with OpenAI-style `/v1/chat/completions` endpoints.
@@ -89,7 +83,7 @@ Current experimental features include:
 - Local conversation persistence.
 - Markdown conversation export.
 - Optional audit log for file actions.
-- Workflow commands based on `_agent/workflows`.
+- Workflow commands, with optional discovery from a configured workflow folder.
 
 ## Installation in Obsidian
 
@@ -165,6 +159,7 @@ Typical settings:
 | Gateway Token | Your Hermes API token, if required |
 | Default model | `hermes/obsidian` or the model routed by your server |
 | Scopes header | Leave empty unless your Hermes API server explicitly requires `x-hermes-scopes` |
+| Workflow folder | Optional vault-relative folder for Markdown workflows, e.g. `Hermes/workflows` or `_agent/workflows`; leave empty if unused |
 
 The plugin sends chat requests to an OpenAI-compatible endpoint:
 
@@ -202,25 +197,19 @@ The plugin includes built-in workflow helper commands:
 | `/workflow-review-note` | Review the active note for structure, claims, links, tags, stale claims, and next edits. |
 | `/workflow-create-note` | Draft a new vault-native Markdown note. |
 | `/workflow-research-pack` | Build a concise research/context pack. |
-| `/workflow-literature` | Analyze literary or scholarly material. |
-| `/workflow-rpg` | Prepare RPG/campaign material while preserving private/public boundaries. |
 
-If your vault contains workflow Markdown files in:
+These built-in commands do not require any special vault folders.
 
-```text
-_agent/workflows/
-```
-
-then the plugin can expose those files as workflow commands using this pattern:
+If you configure **Settings → Hermes Agent → Advanced → Workflow folder** with a vault-relative folder, the plugin can expose Markdown files in that folder as workflow commands using this pattern:
 
 ```text
 /workflow-<workflow-file-name>
 ```
 
-For example, a file like:
+For example, if the workflow folder is `Hermes/workflows`, a file like:
 
 ```text
-_agent/workflows/review-note.md
+Hermes/workflows/review-note.md
 ```
 
 may be exposed as:
@@ -229,7 +218,7 @@ may be exposed as:
 /workflow-review-note
 ```
 
-Each generated workflow command asks Hermes Agent to read and apply the corresponding workflow file.
+Each generated workflow command asks Hermes Agent to read and apply the corresponding workflow file. The folder is optional and may be any vault-relative path; `_agent/workflows` is supported only if the user explicitly configures it.
 
 ## Data storage
 
