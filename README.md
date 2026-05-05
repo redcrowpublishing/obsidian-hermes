@@ -1,3 +1,4 @@
+<img width="1020" height="871" alt="hermes-terminal-icon-transparent" src="https://github.com/user-attachments/assets/14317cd8-c808-4310-8a87-097ac876a43d" />
 # Obsidian Hermes
 
 **Obsidian Hermes** is an experimental Obsidian desktop plugin adapted for use with **Hermes Agent** and Hermes-compatible OpenAI-style API servers.
@@ -155,7 +156,7 @@ Typical settings:
 
 | Setting | Suggested value |
 |---|---|
-| Gateway URL | `http://127.0.0.1:18789` or your Hermes Agent API server URL |
+| Gateway URL | `http://127.0.0.1:8642` or your Hermes Agent API server URL |
 | Gateway Token | Your Hermes API token, if required |
 | Default model | `hermes/obsidian` or the model routed by your server |
 | Scopes header | Leave empty unless your Hermes API server explicitly requires `x-hermes-scopes` |
