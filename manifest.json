@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-hermes",
+  "name": "Hermes Agent",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "Hermes Agent chat assistant for Obsidian with streaming responses, @ file mentions, inline editing, slash commands, workflow commands, and vault-aware context. Works with the Hermes Agent API and other OpenAI-compatible APIs.",
+  "author": "Erik Wroblewski / adapted from Osamadhi obsidian-clawdian",
+  "authorUrl": "https://github.com/Osamadhi/obsidian-clawdian",
+  "isDesktopOnly": true
+}
