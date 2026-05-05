@@ -1,5 +1,4 @@
-<img width="255" height="217" alt="hermes-terminal-icon-transparent" src="https://github.com/user-attachments/assets/14317cd8-c808-4310-8a87-097ac876a43d" />
-# Obsidian Hermes
+# <img width="255" height="217" alt="hermes-terminal-icon-transparent" src="https://github.com/user-attachments/assets/14317cd8-c808-4310-8a87-097ac876a43d" /> Obsidian Hermes
 
 **Obsidian Hermes** is an experimental Obsidian desktop plugin adapted for use with **Hermes Agent** and Hermes-compatible OpenAI-style API servers.
 
